@@ -339,7 +339,7 @@ def export_distribute_json(
         for file in files:
             if file == f'{keyword}.json':
                 filepath = os.path.join(root, file)
-                with open(filepath, 'r') as f:
+                with open(filepath, 'r', encoding='utf-8') as f:
                     data = json.load(f)
     
     example_num = len(data['example'])

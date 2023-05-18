@@ -41,7 +41,6 @@ class  OpenaiAPI:
         messages = [zero_shot_prompt_message]
         message = {"role":"user", "content":question}
         messages.append(message)
-
         output = {}
         while True:
             try:
@@ -92,15 +91,12 @@ class  OpenaiAPI:
 
 
 def test(model, prompt:str, question:str):
-
-
     response = model(prompt, question)
-
     return response
 
 
 if __name__ == "__main__":
-    api_key_list = ["openai_api_key"]
+    # api_key_list = ["openai_api_key"]
     model_api = OpenaiAPI(api_key_list, model_name="gpt-3.5-turbo")
     data_example = {
             "year": "2010",
@@ -115,7 +111,7 @@ if __name__ == "__main__":
         }
     choice_question = data_example['question']
     choice_prompt = "请你做一道英语选择题\n请你一步一步思考并将思考过程写在【解析】和<eoe>之间。你将从A，B，C，D中选出正确的答案，并写在【答案】和<eoa>之间。\n例如：【答案】: A <eoa>\n完整的题目回答的格式如下：\n【解析】 ... <eoe>\n【答案】 ... <eoa>\n请你严格按照上述格式作答。\n题目如下："
-
+    print(choice_prompt)
     result = test(model_api, choice_prompt, choice_question)
 
     print("Model output:\n" + result)
